@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AmazonPage {
+
     private WebDriver driver;
     private final By acceptCookiesButton = By.xpath("//span[contains(text(), 'Accept')]/../input");
     private final By filterBooksLink = By.linkText("Books");
