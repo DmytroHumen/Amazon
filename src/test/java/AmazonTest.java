@@ -2,6 +2,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.AmazonPage;
@@ -24,13 +25,13 @@ public class AmazonTest {
 
     @Test
     public void testBookSearch() {
-        homePage.goToHomePage("https://www.amazon.com/");
+
+        homePage.goToHomePage("https://www.amazon.com.ua/");
         homePage.acceptCookies();
         homePage.filterBooks();
         homePage.searchFor("Java");
 
         Book expectedBook = homePage.getExpectedBookInfo();
-
         searchResultPage.acceptCookies();
         Book actualBook = searchResultPage.getBookInfoByName("Java von Kopf bis Fuß: Eine abwechslungsreiche Entdeckungsreise durch die objektorientierte Programmierung");
 
