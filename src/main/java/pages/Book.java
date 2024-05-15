@@ -8,7 +8,7 @@ public class Book {
     private String author;
     private String price;
     private boolean isBestseller;
-    private String textBook;
+
 
 
     public Book(String bookName, String author, String price, boolean isBestseller) {
@@ -22,21 +22,17 @@ public class Book {
         return bookName;
     }
 
-    public void setTextBook(String textBook) {
-        this.textBook = textBook;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return isBestseller == book.isBestseller && Objects.equals(bookName, book.bookName) && Objects.equals(author, book.author) && Objects.equals(price, book.price) && Objects.equals(textBook, book.textBook);
+        return isBestseller == book.isBestseller && Objects.equals(bookName, book.bookName) && Objects.equals(author, book.author) && Objects.equals(price, book.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookName, author, price, isBestseller, textBook);
+        return Objects.hash(bookName, author, price, isBestseller);
     }
 
 

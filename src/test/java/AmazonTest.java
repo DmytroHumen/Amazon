@@ -9,7 +9,6 @@ import pages.AmazonSearchResultPage;
 import pages.Book;
 
 public class AmazonTest {
-
     private WebDriver driver;
     private AmazonPage homePage;
     private AmazonSearchResultPage searchResultPage;
@@ -42,5 +41,4 @@ public class AmazonTest {
     public void afterTest() {
         driver.quit();
     }
-
 }
