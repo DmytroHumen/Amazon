@@ -31,11 +31,11 @@ public class AmazonTest {
         homePage.filterBooks();
         homePage.searchFor(searchKeyWord);
 
-       // Book expectedBook = homePage.getExpectedBookInfo();
+        Book expectedBook = homePage.getExpectedBookInfo();
         searchResultPage.acceptCookies();
         Book actualBook = searchResultPage.getBookInfoByName("Java von Kopf bis Fuß: Eine abwechslungsreiche Entdeckungsreise durch die objektorientierte Programmierung");
 
-       // Assert.assertEquals(expectedBook, actualBook);
+        Assert.assertEquals(expectedBook, actualBook);
     }
 
     @After
