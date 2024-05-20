@@ -22,7 +22,20 @@
         </dependency>
     </dependencies>
 
-
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <searchParam>${searchParam}</searchParam>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

@@ -4,13 +4,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.AmazonPage;
+import pages.AmazonMainPage;
 import pages.AmazonSearchResultPage;
 import pages.Book;
 
+import java.util.List;
+
 public class AmazonTest {
     private WebDriver driver;
-    private AmazonPage homePage;
+    private AmazonMainPage homePage;
     private AmazonSearchResultPage searchResultPage;
     private String searchKeyWord;
 
@@ -18,7 +20,7 @@ public class AmazonTest {
     public void beforeTest() {
         System.setProperty("webdriver.chrome.driver", "D:\\tools\\chromedriver\\chromedriver.exe");
         driver = new ChromeDriver();
-        homePage = new AmazonPage(driver);
+        homePage = new AmazonMainPage(driver);
         searchResultPage = new AmazonSearchResultPage(driver);
         driver.manage().window().maximize();
         searchKeyWord = System.getProperty("searchParam");
@@ -30,12 +32,12 @@ public class AmazonTest {
         homePage.acceptCookies();
         homePage.filterBooks();
         homePage.searchFor(searchKeyWord);
-
-        Book expectedBook = homePage.getExpectedBookInfo();
-        searchResultPage.acceptCookies();
+        List<Book> listOfBooks = searchResultPage.saveBooksInfoFromFirstPage();
+        searchResultPage.clickBook();
         Book actualBook = searchResultPage.getBookInfoByName("Java von Kopf bis Fuß: Eine abwechslungsreiche Entdeckungsreise durch die objektorientierte Programmierung");
-
+        Book expectedBook = homePage.getExpectedBookInfo();
         Assert.assertEquals(expectedBook, actualBook);
+
     }
 
     @After
@@ -43,3 +45,4 @@ public class AmazonTest {
         driver.quit();
     }
 }
+
