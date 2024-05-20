@@ -11,7 +11,6 @@ public class AmazonSearchResultPage {
     private final WebDriver driver;
     private final By clickOnBook = By.xpath("//*[contains(text(), \"Java von Kopf bis Fuß: Eine abwechslungsreiche Entdeckungsreise durch die objektorientierte Programmierung\")]");
 
-
     public AmazonSearchResultPage(WebDriver driver) {
         this.driver = driver;
     }

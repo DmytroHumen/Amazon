@@ -34,9 +34,8 @@ public class AmazonTest {
         homePage.searchFor(searchKeyWord);
         List<Book> listOfBooks = searchResultPage.saveBooksInfoFromFirstPage();
         searchResultPage.clickBook();
-        Book actualBook = searchResultPage.getBookInfoByName("Java von Kopf bis Fuß: Eine abwechslungsreiche Entdeckungsreise durch die objektorientierte Programmierung");
         Book expectedBook = homePage.getExpectedBookInfo();
-        Assert.assertEquals(expectedBook, actualBook);
+        Assert.assertTrue("Book: " + expectedBook +" not found", listOfBooks.contains(expectedBook));
 
     }
 
