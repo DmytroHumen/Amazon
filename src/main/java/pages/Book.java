@@ -9,7 +9,6 @@ public class Book {
     private String price;
     private boolean isBestseller;
 
-
     public Book(String bookName, String author, String price, boolean isBestseller) {
         this.bookName = bookName;
         this.author = author;
@@ -33,6 +32,4 @@ public class Book {
     public int hashCode() {
         return Objects.hash(bookName, author, price, isBestseller);
     }
-
-
 }
