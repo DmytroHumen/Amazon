@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,10 +16,12 @@ public class AmazonSearchResultPage {
         this.driver = driver;
     }
 
+    @Step("Click on book")
     public void clickBook() {
         driver.findElement(clickOnBook).click();
     }
 
+    @Step("Save books info from first page")
     public List<Book> saveBooksInfoFromFirstPage() {
         List<Book> listOfBooks = new ArrayList<>();
         List<WebElement> results = driver.findElements(By.cssSelector("div[data-component-type='s-search-result']"));
