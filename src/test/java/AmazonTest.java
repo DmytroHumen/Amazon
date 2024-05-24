@@ -33,13 +33,13 @@ public class AmazonTest {
     @Test
     public void testBookSearch() {
         homePage.goToHomePage("https://www.amazon.com.ua/");
-        //homePage.acceptCookies();
+        homePage.acceptCookies();
         homePage.filterBooks();
         homePage.searchFor("Java");
         List<Book> listOfBooks = searchResultPage.saveBooksInfoFromFirstPage();
-//        searchResultPage.clickBook();
-//        Book expectedBook = homePage.getExpectedBookInfo();
-//        Assert.assertTrue("Book not found", listOfBooks.contains(expectedBook));
+        searchResultPage.clickBook();
+        Book expectedBook = homePage.getExpectedBookInfo();
+        Assert.assertTrue("Book not found", listOfBooks.contains(expectedBook));
     }
 
     @After
