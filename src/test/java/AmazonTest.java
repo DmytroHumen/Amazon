@@ -1,3 +1,4 @@
+import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.junit.After;
@@ -30,53 +31,16 @@ public class AmazonTest {
     }
 
     @Test
-    @Description
     public void testBookSearch() {
-        goToHomePage();
-        acceptCookies();
-        filterBooks();
-        searchForKeyWord();
-        List<Book> listOfBooks = saveBooksInfoFromFirstPage();
-        verifyBookInList(listOfBooks);
-
-
-//        searchResultPage.clickBook();
-//        Book expectedBook = homePage.getExpectedBookInfo();
-//        Assert.assertTrue("Book not found", listOfBooks.contains(expectedBook));
-    }
-
-    @Step
-    public void goToHomePage() {
         homePage.goToHomePage("https://www.amazon.com.ua/");
-    }
-
-    @Step
-    public void acceptCookies() {
         homePage.acceptCookies();
-    }
-
-    @Step
-    public void filterBooks() {
         homePage.filterBooks();
-    }
-
-    @Step
-    public void searchForKeyWord() {
         homePage.searchFor(searchKeyWord);
-    }
-
-    @Step
-    public List<Book> saveBooksInfoFromFirstPage() {
-        return searchResultPage.saveBooksInfoFromFirstPage();
-    }
-
-    @Step
-    public void verifyBookInList(List<Book> listOfBook) {
+        List<Book> listOfBooks = searchResultPage.saveBooksInfoFromFirstPage();
         searchResultPage.clickBook();
         Book expectedBook = homePage.getExpectedBookInfo();
-        Assert.assertTrue("Book not found", listOfBook.contains(expectedBook));
+        Assert.assertTrue("Book not found", listOfBooks.contains(expectedBook));
     }
-
 
     @After
     public void afterTest() {
